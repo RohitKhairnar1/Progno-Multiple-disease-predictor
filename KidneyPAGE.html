@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Kidneycss.css">
+    <title>Kidney Disease Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="PAGE1.html">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="DiabetesPAGE.html">Diabetes</a>
+                                <a href="KidneyPAGE.html">Kidney</a>
+                                <a href="HeartPAGE.html">Heart Disease</a>
+                                <a href="MalariaPAGE.html">Malaria</a>
+                                <a href="PneumoniaPAGE.html">Pneumonia</a>
+                                <a href="BreastPAGE.html">Breast Cancer</a>
+                                <a href="LiverPAGE.html">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="Account.html">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="kidney-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Kidney Disease</span></h1>
+            <form class="kidney-form">
+                <div class="form-columns">
+                    <div class="form-column">
+                        
+                        <label for="age">Age:</label>
+                        <input type="text" id="age" placeholder="(years)" name="age" required>
+
+                        <label for="bp">Blood Pressure:</label>
+                        <input type="text" id="bp"  name="bp" required>
+
+                        <label for="sg">Specific Gravity:</label>
+                        <input type="text" id="sg"  name="sg" required>
+
+                        <label for="al">Albumin:</label>
+                        <input type="text" id="al"  name="al" required>
+
+                        <label for="su">Sugar:</label>
+                        <input type="text" id="su"  name="su" required>
+
+                        <label for="rbc">Red Blood Cells:</label>
+                        <input type="text" id="rbc"  name="rbc" required>
+
+                        <label for="pc">Pus Cell:</label>
+                        <input type="text" id="pc"  name="pc" required>
+                    
+                        <label for="pcc">Pus Cell Clumps:</label>
+                        <input type="text" id="pcc"  name="pcc" required>
+
+                    </div>
+                    <div class="form-column">
+
+                        <label for="ba">Bacteria:</label>
+                        <input type="text" id="ba"  name="ba" required>
+
+                        <label for="bgr">Blood Glucose Random:</label>
+                        <input type="text" id="bgr"  name="bgr" required>
+
+                        <label for="bu">Blood Urea:</label>
+                        <input type="text" id="bu"  name="bu" required>
+
+                        <label for="sc">Serum Creatinine:</label>
+                        <input type="text" id="sc"  name="sc" required>
+
+                        <label for="sod">Sodium:</label>
+                        <input type="text" id="sod"  name="sod" required>
+
+                        <label for="pot">Potassium:</label>
+                        <input type="text" id="pot"  name="pot" required>
+
+                        <label for="hemo">Hemoglobin:</label>
+                        <input type="text" id="hemo"  name="hemo" required>
+
+                        <label for="pcv">Packed Cell Volume:</label>
+                        <input type="text" id="pcv"  name="pcv" required>
+
+                    </div>
+                    <div class="form-column">
+
+                        <label for="wc">White Blood Cell Count:</label>
+                        <input type="text" id="wc"  name="wc" required>
+
+                        <label for="rc">Red Blood Cell Count:</label>
+                        <input type="text" id="rc"  name="rc" required>
+
+                        <label for="htn">Hypertension:</label>
+                        <input type="text" id="htn"  name="htn" required>
+
+                        <label for="dm">Diabetes Mellitus:</label>
+                        <input type="text" id="dm" name="dm" required>
+
+                        <label for="cad">Coronary Artery Disease:</label>
+                        <input type="text" id="cad"  name="cad" required>
+
+                        <label for="appet">Appetite:</label>
+                        <input type="text" id="appet"  required>
+
+                        <label for="pe">Pedal Edema:</label>
+                        <input type="text" id="pe" p name="pe" required>
+
+                        <label for="ane">Anemia:</label>
+                        <input type="text" id="ane"  name="ane" required>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="submit-button">Predict Kidney Disease</button>
+            </form>
+            <br><br><br>
+        </section>
+    </div>
+</body>
+</html>
