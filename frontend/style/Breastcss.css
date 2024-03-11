@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('../images/bg1.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, red, blue ); /* Gradient color */
+    -webkit-background-clip: text; /* Apply the gradient to the text */
+    color: transparent; /* Make the original text transparent */
+    display: inline-block; /* Prevent line break within the text */
+}
+
+
+header {
+    background-color: transparent;
+    padding: 20px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white; /* Text color in the navbar */
+    text-decoration: none; /* Remove underlines */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333; /* Dark background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: #fff; /* Text color */
+}
+
+.dropdown-content a {
+    color: #fff; /* Text color for links */
+    text-decoration: none; /* Remove underlines */
+    padding: 10px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555; /* Hover background color */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.breast-cancer-section {
+    text-align: left;
+    color: #fff;
+    margin-top: 5%;
+}
+
+.breast-cancer-section h1 {
+    font-size: 2em;
+}
+
+.breast-cancer-form {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.form-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-column {
+    flex: 1;
+    max-width: 30%;
+}
+
+.breast-cancer-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.breast-cancer-form input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.breast-cancer-form .submit-button {
+    background-color: #186A3B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.breast-cancer-form .submit-button:hover {
+    background-color: #790B0B;
+}

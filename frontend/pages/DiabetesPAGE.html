@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/Diabetescss.css">
+    <title>Diabetes Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="PAGE1.html">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="DiabetesPAGE.html">Diabetes</a>
+                                <a href="KidneyPAGE.html">Kidney</a>
+                                <a href="HeartPAGE.html">Heart Disease</a>
+                                <a href="MalariaPAGE.html">Malaria</a>
+                                <a href="PneumoniaPAGE.html">Pneumonia</a>
+                                <a href="BreastPAGE.html">Breast Cancer</a>
+                                <a href="LiverPAGE.html">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="Account.html">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="diabetes-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Diabetes</span></h1>
+            <form class="diabetes-form">
+                <div class="form-column">
+                    <label for="pregnancies">Pregnancies:</label>
+                    <input type="text" id="pregnancies" placeholder="Number of times pregnant (if male put 0) " name="pregnancies" required>
+
+                    <label for="glucose">Glucose:</label>
+                    <input type="text" id="glucose" placeholder="Plasma glucose concentration " name="glucose" required>
+
+                    <label for="bloodPressure">Blood Pressure:</label>
+                    <input type="text" id="bloodPressure" placeholder="Diastolic blood pressure (mm Hg)" name="bloodPressure" required>
+
+                    <label for="skinThickness">Skin Thickness:</label>
+                    <input type="text" id="skinThickness" placeholder="Triceps skin fold thickness (mm)" name="skinThickness" required>
+                </div>
+                <div class="form-column">
+                    <label for="insulin">Insulin:</label>
+                    <input type="text" id="insulin" placeholder="2-Hour serum insulin (mu U/ml)" name="insulin" required>
+
+                    <label for="bmi">BMI:</label>
+                    <input type="text" id="bmi" placeholder="Body mass index (weight in kg/(height in m)^2)" name="bmi" required>
+
+                    <label for="pedigreeFunction">Diabetes Pedigree Function:</label>
+                    <input type="text" id="pedigreeFunction" placeholder = "Diabetes pedigree function" name="pedigreeFunction" required>
+
+                    <label for="age">Age:</label>
+                    <input type="text" id="age" placeholder="Age (years)" name="age" required><br><br><br>
+
+                    <button type="submit" class="submit-button">Predict Diabetes</button>
+                </div>
+                
+            </form>
+        </section>
+    </div>
+</body>
+</html>

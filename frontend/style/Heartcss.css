@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('../images/bg1.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, red, blue);
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+header {
+    background-color: transparent;
+    padding: 20px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: #fff;
+}
+
+.dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.heart-disease-section {
+    text-align: left;
+    color: #fff;
+    margin-top: 5%;
+}
+
+.heart-disease-section h1 {
+    font-size: 2em;
+}
+
+.heart-disease-form {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.form-column {
+    flex: 1;
+    max-width: 45%;
+}
+
+.heart-disease-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.heart-disease-form input {
+    width: 80%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.heart-disease-form .submit-button {
+    background-color: #186A3B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+}
+.heart-disease-form .submit-button:hover {
+    background-color: #790B0B;
+}
