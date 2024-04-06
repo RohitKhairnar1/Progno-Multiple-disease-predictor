@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Malariacss.css') }}">
+    <style>
+        .sample-images {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .sample-image {
+            width: 45%;
+        }
+        .sample-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .cell-description {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <title>Malaria Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="/PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="/KidneyPAGE">Kidney</a>
+                                <a href="/HeartPAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="malaria-section" >
+            <h1>Upload an image to predict <span class="gradient-text">Malaria</span></h1>
+            <form class="malaria-form" enctype="multipart/form-data" action="/predict_malaria" method="post">
+                <div class="upload-section">
+                    <input type="file" id="imageUpload" accept="image/*" name="image" required>
+                </div>
+                <button type="submit" class="submit-button">Predict Malaria</button>
+            </form>
+            <!-- Sample Images -->
+            <br><br><br>
+            <h3 style="color: aliceblue; text-align: left; ">Input Data Example :</h3>
+            <div class="sample-images" >
+                <div class="sample-image" style="background-color:#A09E90; border-radius: 5px;">
+                    <h3 style="color: black;">Uninfected</h3>
+                    <img src="static/css/images/CELL_IMAGE2.png" alt="Uninfected Sample">
+                    <p class="cell-description" style="color: black;">This image shows uninfected red blood cells.</p>
+                </div>
+                <div class="sample-image" style="background-color:#A09E90; border-radius: 5px;">
+                    <h3 style="color: black;">Infected</h3>
+                    <img src="static/css/images/CELL_IMAGE1.png" alt="Infected Sample">
+                    <p class="cell-description" style="color: black;"><br>This image shows red blood cells infected with malaria parasites.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <br><br><br>
+</body>
+</html>

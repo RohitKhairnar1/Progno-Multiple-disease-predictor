@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Heartcss.css') }}">
+    <title>Heart Disease Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="/PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="KidneyPAGE">Kidney</a>
+                                <a href="/HeartDiseasePAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account.html">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="heart-disease-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Heart Disease</span></h1>
+            <form class="heart-disease-form" action="/predict_heart" method="post">
+                <div class="form-column">
+                    <label for="age">Age:</label>
+                    <input type="number" step="any" id="age" placeholder="Age (years)" name="age" required>
+
+                    <label for="sex">Sex:</label>
+                    <input type="number" step="any" id="sex" placeholder="Gender" name="sex" required>
+
+                    <label for="chestPainType">Chest Pain Type:</label>
+                    <input type="number" step="any" id="chestPainType" placeholder="Type of chest pain" name="chestPainType" required>
+
+                    <label for="bp">Blood Pressure (BP):</label>
+                    <input type="number" step="any" id="bp" placeholder="Blood pressure (mm Hg)" name="bp" required>
+
+                    <label for="cholesterol">Cholesterol:</label>
+                    <input type="number" step="any" id="cholesterol" placeholder="Cholesterol level" name="cholesterol" required>
+
+                    <label for="fbsOver120">Fasting Blood Sugar > 120:</label>
+                    <input type="number" step="any" id="fbsOver120" placeholder="FBS over 120 (1 for true, 0 for false)" name="fbsOver120" required>
+
+                    <label for="ekgResults">EKG Results:</label>
+                    <input type="number" step="any" id="ekgResults" placeholder="EKG results" name="ekgResults" required>
+
+                                    </div>
+                <div class="form-column">
+
+                    <label for="maxHR">Max Heart Rate:</label>
+                    <input type="number" step="any" id="maxHR" placeholder="Maximum heart rate achieved" name="maxHR" required>
+
+                    <label for="exerciseAngina">Exercise-Induced Angina:</label>
+                    <input type="number" step="any" id="exerciseAngina" placeholder="Exercise-induced angina (1 for yes, 0 for no)" name="exerciseAngina" required>
+
+                    <label for="stDepression">ST Depression:</label>
+                    <input type="number" step="any" id="stDepression" placeholder="ST depression induced by exercise" name="stDepression" required>
+
+                    <label for="slopeOfST">Slope of ST Segment:</label>
+                    <input type="number" step="any" id="slopeOfST" placeholder="Slope of ST segment during exercise" name="slopeOfST" required>
+
+                    <label for="numOfVesselsFluro">Number of Vessels Fluro:</label>
+                    <input type="number" step="any"  id="numOfVesselsFluro" placeholder="Number of major vessels colored by fluoroscopy" name="numOfVesselsFluro" required>
+
+                    <label for="thallium">Thallium:</label>
+                    <input type="number" step="any" id="thallium" placeholder="Thallium stress test result" name="thallium" required><br>
+
+                    <button type="submit" class="submit-button">Predict Heart Disease</button><br><br>
+                </div>
+                
+            </form>
+        </section>
+        <div class="table-container">
+            <h3 style="color: aliceblue;">Input Data Example :</h3>
+            <table>
+                <tr>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Chest Pain</th>
+                    <th>BP</th>
+                    <th>Cholesterol</th>
+                    <th>FBS Over 120</th>
+                    <th>EKG Results</th>
+                    <th>Max HR</th>
+                </tr>
+                <tr>
+                    <td>70</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>130</td>
+                    <td>322</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>109</td>
+                </tr>
+                <tr>
+                    <td>67</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>115</td>
+                    <td>564</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>160</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="table-container">
+            <br><br>
+            <table>
+                <tr>
+                    <th>Exercise Angina</th>
+                    <th>ST Depression</th>
+                    <th>Slope of ST</th>
+                    <th>Num of Vessels</th>
+                    <th>Thallium</th>
+                    <th>Target</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>2.4</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>1.6</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>7</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div><br>
+        <h3 style="color: aliceblue;">Input Data Explanation :</h3>
+<section  style="background-color: aliceblue; padding: 2%;">
+    <p><b>Age:</b> Age of the patient in years.</p>
+    <p><b>Sex:</b> Gender of the patient. (0 = female, 1 = male)</p>
+    <p><b>Chest Pain Type:</b> Type of chest pain experienced by the patient. (1 = typical angina, 2 = atypical angina, 3 = non-anginal pain, 4 = asymptomatic)</p>
+    <p><b>Blood Pressure:</b> Resting blood pressure of the patient in mm Hg.</p>
+    <p><b>Cholesterol:</b> Serum cholesterol level in mg/dl.</p>
+    <p><b>Fasting Blood Sugar Over 120 mg/dl:</b> Fasting blood sugar level > 120 mg/dl (1 = true, 0 = false)</p>
+    <p><b>Electrocardiographic Results:</b> Resting electrocardiographic results. (0 = normal, 1 = having ST-T wave abnormality, 2 = showing probable or definite left ventricular hypertrophy)</p>
+    <p><b>Maximum Heart Rate Achieved:</b> Maximum heart rate achieved during exercise.</p>
+    <p><b>Exercise Induced Angina:</b> Exercise induced angina. (1 = yes, 0 = no)</p>
+    <p><b>ST Depression:</b> ST depression induced by exercise relative to rest.</p>
+    <p><b>Slope Of ST Segment:</b> Slope of the peak exercise ST segment. (1 = upsloping, 2 = flat, 3 = downsloping)</p>
+    <p><b>Number Of Major Vessels Fluro:</b> Number of major vessels colored by fluoroscopy (0-3).</p>
+    <p><b>Thallium Stress Test Result:</b> Results of thallium stress test. (3 = normal, 6 = fixed defect, 7 = reversible defect)</p>
+    <p><b>Target:</b> Presence of heart disease. (1 = presence, 0 = absence)</p>
+</section >
+    </div><br><br>
+</body>
+</html>

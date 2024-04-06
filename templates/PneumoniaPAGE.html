@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Pneumoniacss.css') }}">
+    <title>Pneumonia Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="/KidneyPAGE">Kidney</a>
+                                <a href="/HeartPAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="Pneumonia-section">
+            <h1>Upload an image to predict <span class="gradient-text">Pneumonia</span></h1>
+            <form class="Pneumonia-form" enctype="multipart/form-data">
+                <div class="upload-section">
+                    <input type="file" id="imageUpload" accept="image/*" name="image" required>
+                </div>
+                <button type="submit" class="submit-button">Predict Pneumonia</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

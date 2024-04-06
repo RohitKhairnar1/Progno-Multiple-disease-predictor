@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Diabetescss.css') }}">
+    <title>Diabetes Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="/PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="/KidneyPAGE">Kidney</a>
+                                <a href="/HeartPAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="diabetes-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Diabetes</span></h1>
+            <form class="diabetes-form" action="/predict_diabetes" method="post">
+                <div class="form-column">
+                    <label for="pregnancies">Pregnancies:</label>
+                    <input type="t" id="pregnancies" placeholder="Number of times pregnant (if male put 0) " name="pregnancies" required>
+
+                    <label for="glucose">Glucose:</label>
+                    <input type="number" step="any" id="glucose" placeholder="Plasma glucose concentration " name="glucose" required>
+
+                    <label for="bloodPressure">Blood Pressure:</label>
+                    <input type="number" step="any" id="bloodPressure" placeholder="Diastolic blood pressure (mm Hg)" name="bloodPressure" required>
+
+                    <label for="skinThickness">Skin Thickness:</label>
+                    <input type="number" step="any" id="skinThickness" placeholder="Triceps skin fold thickness (mm)" name="skinThickness" required>
+                </div>
+                <div class="form-column">
+                    <label for="insulin">Insulin:</label>
+                    <input type="number" step="any" id="insulin" placeholder="2-Hour serum insulin (mu U/ml)" name="insulin" required>
+
+                    <label for="bmi">BMI:</label>
+                    <input type="number" step="any" id="bmi" placeholder="Body mass index (weight in kg/(height in m)^2)" name="bmi" required>
+
+                    <label for="pedigreeFunction">Diabetes Pedigree Function:</label>
+                    <input type="number" step="any" id="pedigreeFunction" placeholder = "Diabetes pedigree function" name="pedigreeFunction" required>
+
+                    <label for="age">Age:</label>
+                    <input type="number " step="any" id="age" placeholder="Age (years)" name="age" required><br><br><br>
+
+                    <button type="submit" class="submit-button">Predict Diabetes</button>
+                </div>
+            
+
+            </form>
+        </section>
+        <h3 style="color: aliceblue;">Input Data Example :</h3>
+
+<table>
+    <tr>
+        <th>Pregnancies </th>
+        <th>Glucose</th>
+        <th>BloodPressure</th>
+        <th>SkinThickness</th>
+        <th>Insulin</th>
+        <th>BMI</th>
+        <th>DiabetesPedigreeFunction</th>
+        <th>Age</th>
+        <th>Outcome</th>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>148</td>
+        <td>72</td>
+        <td>35</td>
+        <td>0</td>
+        <td>33.6</td>
+        <td>0.627</td>
+        <td>50</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>85</td>
+        <td>66</td>
+        <td>29</td>
+        <td>0</td>
+        <td>26.6</td>
+        <td>0.351</td>
+        <td>31</td>
+        <td>0</td>
+    </tr>
+</table>
+<br><br>
+<h3 style="color: aliceblue;">Input Data Explanation :</h3>
+<section style="background-color: aliceblue; padding: 2%;">
+    <p><b>Pregnancies</b> : The number of times a participant has been pregnant. This is a numerical value ranging from 0 to 17, indicating the number of pregnancies a woman has had.</p>
+
+    <p><b>Glucose</b> : Plasma glucose concentration a 2 hours in an oral glucose tolerance test. This is a measure of blood sugar levels and is crucial for diabetes diagnosis. The range is from 0 to 199 mg/dL.</p>
+
+    <p><b>BloodPressure</b> : Diastolic blood pressure, which is the pressure in the lower part of the heart when it pumps blood to the rest of the body. The range is from 0 to 122 mm Hg.</p>
+
+    <p><b>SkinThickness</b> : Triceps skinfold thickness measured in millimeters. This is an indicator of the amount of subcutaneous fat. The range is from 0 to 99 mm.</p>
+
+    <p><b>Insulin</b> : 2-Hour serum insulin measured in microunits per milliliter (mu U/ml). This is a measure of insulin levels in the blood, which is important for diabetes management and diagnosis. The range is from 0 to 846 mu U/ml.</p>
+
+    <p><b>BMI</b> : Body Mass Index, calculated as weight in kilograms divided by the square of height in meters. This is a measure of body fat and is used to assess a person's risk of developing health problems like diabetes. The range is from 0 to 67.1 kg/m^2.</p>
+
+    <p><b>Diabetes Pedigree Function </b>: This is a measure of the likelihood of developing diabetes based on family history. It ranges from 0.078 to 2.42, with higher values indicating a higher risk.</p>
+
+    <p><b>Age </b>: The age of the participants, ranging from 21 to 81 years. This is a crucial factor in diabetes risk assessment as age is a significant risk factor for diabetes.</p>
+    </section>
+    <br><br>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Breastcss.css') }}">
+    <title>Breast Cancer Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="/PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="/KidneyPAGE">Kidney</a>
+                                <a href="/HeartPAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="breast-cancer-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Breast Cancer</span></h1>
+            <form class="breast-cancer-form" action="/predict_breast_cancer" method="post">
+                <div class="form-columns">
+                    <div class="form-column">
+                        <label for="radiusMean">Radius Mean:</label>
+                        <input type="text" id="radiusMean" name="radiusMean" required>
+                        <label for="radiusSe">Radius SE:</label>
+                        <input type="text" id="radiusSe" name="radiusSe" required>
+                        <label for="radiusWorst">Radius Worst:</label>
+                        <input type="text" id="radiusWorst" name="radiusWorst" required>
+                        <label for="textureMean">Texture Mean:</label>
+                        <input type="text" id="textureMean" name="textureMean" required>
+                        <label for="textureSe">Texture SE:</label>
+                        <input type="text" id="textureSe" name="textureSe" required>
+                        <label for="textureWorst">Texture Worst:</label>
+                        <input type="text" id="textureWorst" name="textureWorst" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="perimeterMean">Perimeter Mean:</label>
+                        <input type="text" id="perimeterMean" name="perimeterMean" required>
+                        <label for="perimeterSe">Perimeter SE:</label>
+                        <input type="text" id="perimeterSe" name="perimeterSe" required>
+                        <label for="perimeterWorst">Perimeter Worst:</label>
+                        <input type="text" id="perimeterWorst" name="perimeterWorst" required>
+                        <label for="areaMean">Area Mean:</label>
+                        <input type="text" id="areaMean" name="areaMean" required>
+                        <label for="areaSe">Area SE:</label>
+                        <input type="text" id="areaSe" name="areaSe" required>
+                        <label for="areaWorst">Area Worst:</label>
+                        <input type="text" id="areaWorst" name="areaWorst" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="smoothnessMean">Smoothness Mean:</label>
+                        <input type="text" id="smoothnessMean" name="smoothnessMean" required>
+                        <label for="smoothnessSe">Smoothness SE:</label>
+                        <input type="text" id="smoothnessSe" name="smoothnessSe" required>
+                        <label for="smoothnessWorst">Smoothness Worst:</label>
+                        <input type="text" id="smoothnessWorst" name="smoothnessWorst" required>
+                        <label for="compactnessMean">Compactness Mean:</label>
+                        <input type="text" id="compactnessMean" name="compactnessMean" required>
+                        <label for="compactnessSe">Compactness SE:</label>
+                        <input type="text" id="compactnessSe" name="compactnessSe" required>
+                        <label for="compactnessWorst">Compactness Worst:</label>
+                        <input type="text" id="compactnessWorst" name="compactnessWorst" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="concavityMean">Concavity Mean:</label>
+                        <input type="text" id="concavityMean" name="concavityMean" required>
+                        <label for="concavitySe">Concavity SE:</label>
+                        <input type="text" id="concavitySe" name="concavitySe" required>
+                        <label for="concavityWorst">Concavity Worst:</label>
+                        <input type="text" id="concavityWorst" name="concavityWorst" required>
+                        <label for="concavePointsMean">Concave Points Mean:</label>
+                        <input type="text" id="concavePointsMean" name="concavePointsMean" required>
+                        <label for="concavePointsSe">Concave Points SE:</label>
+                        <input type="text" id="concavePointsSe" name="concavePointsSe" required>
+                        <label for="concavePointsWorst">Concave Points Worst:</label>
+                        <input type="text" id="concavePointsWorst" name="concavePointsWorst" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="symmetryMean">Symmetry Mean:</label>
+                        <input type="text" id="symmetryMean" name="symmetryMean" required>
+                        <label for="symmetrySe">Symmetry SE:</label>
+                        <input type="text" id="symmetrySe" name="symmetrySe" required>
+                        <label for="symmetryWorst">Symmetry Worst:</label>
+                        <input type="text" id="symmetryWorst" name="symmetryWorst" required>
+                        <label for="fractalDimensionMean">Fractal Dimension Mean:</label>
+                        <input type="text" id="fractalDimensionMean" name="fractalDimensionMean" required>
+                        <label for="fractalDimensionSe">Fractal Dimension SE:</label>
+                        <input type="text" id="fractalDimensionSe" name="fractalDimensionSe" required>
+                        <label for="fractalDimensionWorst">Fractal Dimension Worst:</label>
+                        <input type="text" id="fractalDimensionWorst" name="fractalDimensionWorst" required>
+                    </div>
+                </div><br><br>
+                <button type="submit" class="submit-button">Predict Breast Cancer</button>
+            </form>
+        </section>
+        <br><br>
+        <h3 style="color: aliceblue;">Input Data Example :</h3>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Diagnosis</th>
+                    <th>Radius Mean</th>
+                    <th>Texture Mean</th>
+                    <th>Perimeter Mean</th>
+                    <th>Area Mean</th>
+                    <th>Smoothness Mean</th>
+                    <th>Compactness Mean</th>
+                    <th>Concavity Mean</th>
+                    <th>Concave Points Mean</th>
+                    <th>Symmetry Mean</th>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>19.81</td>
+                    <td>22.15</td>
+                    <td>130</td>
+                    <td>1260</td>
+                    <td>0.09831</td>
+                    <td>0.1027</td>
+                    <td>0.1479</td>
+                    <td>0.09498</td>
+                    <td>0.1582</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>13.54</td>
+                    <td>14.36</td>
+                    <td>87.46</td>
+                    <td>566.3</td>
+                    <td>0.09779</td>
+                    <td>0.08129</td>
+                    <td>0.06664</td>
+                    <td>0.04781</td>
+                    <td>0.1885</td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Radius SE</th>
+                    <th>Texture SE</th>
+                    <th>Perimeter SE</th>
+                    <th>Area SE</th>
+                    <th>Smoothness SE</th>
+                    <th>Compactness SE</th>
+                    <th>Concavity SE</th>
+                    <th>Concave Points SE</th>
+                    <th>Symmetry SE</th>
+                    <th>Fractal Dimension SE</th>
+                </tr>
+                <tr>
+                    <td>0.7582</td>
+                    <td>1.017</td>
+                    <td>5.865</td>
+                    <td>112.4</td>
+                    <td>0.006494</td>
+                    <td>0.01893</td>
+                    <td>0.03391</td>
+                    <td>0.01521</td>
+                    <td>0.01356</td>
+                    <td>0.001997</td>
+                </tr>
+                <tr>
+                    <td>0.2699</td>
+                    <td>0.7886</td>
+                    <td>2.058</td>
+                    <td>23.56</td>
+                    <td>0.008462</td>
+                    <td>0.0146</td>
+                    <td>0.02387</td>
+                    <td>0.01315</td>
+                    <td>0.0198</td>
+                    <td>0.0023</td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Radius Worst</th>
+                    <th>Texture Worst</th>
+                    <th>Perimeter Worst</th>
+                    <th>Area Worst</th>
+                    <th>Smoothness Worst</th>
+                    <th>Compactness Worst</th>
+                    <th>Concavity Worst</th>
+                    <th>Concave Points Worst</th>
+                    <th>Symmetry Worst</th>
+                    <th>Fractal Dimension Worst</th>
+                </tr>
+                <tr>
+                    <td>27.32</td>
+                    <td>30.88</td>
+                    <td>186.8</td>
+                    <td>2398</td>
+                    <td>0.1512</td>
+                    <td>0.315</td>
+                    <td>0.5372</td>
+                    <td>0.2388</td>
+                    <td>0.2768</td>
+                    <td>0.07615</td>
+                </tr>
+                <tr>
+                    <td>15.11</td>
+                    <td>19.26</td>
+                    <td>99.7</td>
+                    <td>711.2</td>
+                    <td>0.144</td>
+                    <td>0.1773</td>
+                    <td>0.239</td>
+                    <td>0.1288</td>
+                    <td>0.2977</td>
+                    <td>0.07259</td>
+                </tr>
+            </table>
+        </div>
+<br><br>
+        <h3 style="color: aliceblue;">Input Data Explanation :</h3>
+<section style="background-color: aliceblue; padding: 2%;">
+    <p><b>Diagnosis:</b> The diagnosis of breast tissue (M = malignant, B = benign).</p>
+    <p>Malignant (M): refers to cancerous tumors. Malignant tumors are those composed of abnormal cells that can invade and destroy nearby tissues and can spread (metastasize) to other parts of the body. Malignant tumors are typically considered harmful and may require aggressive treatment such as surgery, chemotherapy, or radiation therapy.</p>
+
+    <p>Benign (B): refers to non-cancerous tumors. Benign tumors are composed of normal cells that do not invade nearby tissues or spread to other parts of the body. While benign tumors are not typically life-threatening, they may still cause health issues depending on their size and location. In many cases, benign tumors may be monitored by healthcare professionals but may not require immediate treatment.</p>
+
+    <p><b>Radius Mean:</b> Mean of distances from center to points on the perimeter.</p>
+
+    <p><b>Texture Mean:</b> Standard deviation of gray-scale values.</p>
+
+    <p><b>Perimeter Mean:</b> Mean size of the core tumor.</p>
+
+    <p><b>Area Mean:</b> Mean area of the core tumor.</p>
+
+    <p><b>Smoothness Mean:</b> Mean of local variation in radius lengths.</p>
+
+    <p><b>Compactness Mean:</b> Measure of compactness (perimeter^2 / area - 1.0).</p>
+
+    <p><b>Concavity Mean:</b> Severity of concave portions of the contour.</p>
+
+    <p><b>Concave Points Mean:</b> Number of concave portions of the contour.</p>
+
+    <p><b>Symmetry Mean:</b> Symmetry of cell nuclei.</p>
+
+    <p><b>Fractal Dimension Mean:</b> "Coastline approximation" - 1.</p>
+
+    <p><b>Radius SE:</b> Standard error of the mean of distances from center to points on the perimeter.</p>
+
+    <p><b>Texture SE:</b> Standard error of gray-scale values.</p>
+
+    <p><b>Perimeter SE:</b> Standard error of the size of the core tumor.</p>
+
+    <p><b>Area SE:</b> Standard error of the area of the core tumor.</p>
+
+    <p><b>Smoothness SE:</b> Standard error of local variation in radius lengths.</p>
+
+    <p><b>Compactness SE:</b> Standard error of the measure of compactness.</p>
+
+    <p><b>Concavity SE:</b> Standard error of the severity of concave portions of the contour.</p>
+
+    <p><b>Concave Points SE:</b> Standard error for the number of concave portions of the contour.</p>
+
+    <p><b>Symmetry SE:</b> Standard error of symmetry of cell nuclei.</p>
+
+    <p><b>Fractal Dimension SE:</b> Standard error for "coastline approximation".</p>
+
+    <p><b>Radius Worst:</b> "Worst" or largest mean value for mean of distances from center to points on the perimeter.</p>
+
+    <p><b>Texture Worst:</b> "Worst" or largest mean value for standard deviation of gray-scale values.</p>
+
+    <p><b>Perimeter Worst:</b> "Worst" or largest mean value for mean size of the core tumor.</p>
+
+    <p><b>Area Worst:</b> "Worst" or largest mean value for mean area of the core tumor.</p>
+
+    <p><b>Smoothness Worst:</b> "Worst" or largest mean value for local variation in radius lengths.</p>
+
+    <p><b>Compactness Worst:</b> "Worst" or largest mean value for measure of compactness.</p>
+
+    <p><b>Concavity Worst:</b> "Worst" or largest mean value for severity of concave portions of the contour.</p>
+
+    <p><b>Concave Points Worst:</b> "Worst" or largest mean value for number of concave portions of the contour.</p>
+
+    <p><b>Symmetry Worst:</b> "Worst" or largest mean value for symmetry of cell nuclei.</p>
+
+    <p><b>Fractal Dimension Worst:</b> "Worst" or largest mean value for "coastline approximation".</p>
+</section>
+<br><br>
+    
+    </div>
+</body>
+</html>

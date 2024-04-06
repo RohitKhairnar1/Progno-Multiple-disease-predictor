@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Livercss.css') }}">
+    <title>Liver Disease Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="/PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="/KidneyPAGE">Kidney</a>
+                                <a href="/HeartPAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="liver-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Liver Disease</span></h1>
+            <form class="liver-form" action="/predict_liver" method="post">
+                <div class="form-columns">
+                    <div class="form-column">
+                        <label for="Age">Age:</label>
+                        <input type="text" id="Age" name="Age" required>
+
+                        <label for="Gender">Gender:</label>
+                        <select id="Gender" name="Gender" required>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+
+                        <label for="Total_Bilirubin">Total Bilirubin:</label>
+                        <input type="text" id="Total_Bilirubin" name="Total_Bilirubin" required>
+
+                        <label for="Direct_Bilirubin">Direct Bilirubin:</label>
+                        <input type="text" id="Direct_Bilirubin" name="Direct_Bilirubin" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="Alkaline_Phosphotase">Alkaline Phosphatase:</label>
+                        <input type="text" id="Alkaline_Phosphotase" name="Alkaline_Phosphotase" required>
+
+                        <label for="Alamine_Aminotransferase">Alamine Aminotransferase:</label>
+                        <input type="text" id="Alamine_Aminotransferase" name="Alamine_Aminotransferase" required>
+
+                        <label for="Aspartate_Aminotransferase">Aspartate Aminotransferase:</label>
+                        <input type="text" id="Aspartate_Aminotransferase" name="Aspartate_Aminotransferase" required>
+
+                        <label for="Total_Protiens">Total Proteins:</label>
+                        <input type="text" id="Total_Protiens" name="Total_Protiens" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="Albumin">Albumin:</label>
+                        <input type="text" id="Albumin" name="Albumin" required>
+
+                        <label for="Albumin_and_Globulin_Ratio">Albumin and Globulin Ratio:</label>
+                        <input type="text" id="Albumin_and_Globulin_Ratio" name="Albumin_and_Globulin_Ratio" required>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Predict Liver Disease</button>
+            </form>
+        </section>
+        <h3 style="color: aliceblue;">Input Data Example :</h3>
+
+        <table>
+            <tr>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Total Bilirubin</th>
+                <th>Direct Bilirubin</th>
+                <th>Alkaline Phosphatase</th>
+                <th>Alamine Aminotransferase</th>
+                <th>Aspartate Aminotransferase</th>
+                <th>Total Proteins</th>
+                <th>Albumin</th>
+                <th>Albumin and Globulin Ratio</th>
+                <th>Outcome</th>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>Female</td>
+                <td>0.9</td>
+                <td>0.3</td>
+                <td>202</td>
+                <td>14</td>
+                <td>11</td>
+                <td>6.7</td>
+                <td>3.6</td>
+                <td>1.1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Male</td>
+                <td>0.9</td>
+                <td>0.3</td>
+                <td>202</td>
+                <td>22</td>
+                <td>19</td>
+                <td>7.4</td>
+                <td>4.1</td>
+                <td>1.2</td>
+                <td>2</td>
+            </tr>
+        </table>
+    
+        <br><br>
+    
+        <h3 style="color: aliceblue;">Input Data Explanation :</h3>
+        <section style="background-color: aliceblue;">
+
+            <p><b>Age</b>: Age of the patient. This is a numerical value indicating the patient's age in years.</p>
+    
+            <p><b>Gender</b>: Gender of the patient. It can be either Female or Male.</p>
+    
+            <p><b>Total Bilirubin</b>: Total amount of bilirubin in the blood. Bilirubin is an orange-yellow pigment formed in the liver by the breakdown of hemoglobin and excreted in bile. The range for total bilirubin levels is typically from 0.1 to 1.2 mg/dL.</p>
+    
+            <p><b>Direct Bilirubin</b>: Direct bilirubin level in the blood. Direct bilirubin measures the amount of bilirubin that is conjugated (directly soluble) in the blood. Elevated levels may indicate liver or bile duct disease. The normal range for direct bilirubin is usually up to 0.3 mg/dL.</p>
+    
+            <p><b>Alkaline Phosphatase</b>: Alkaline phosphatase enzyme level in the blood. Alkaline phosphatase is an enzyme found in various tissues throughout the body, with particularly high concentrations in the liver, bile ducts, and bones. Elevated levels may indicate liver or bone disease. The normal range varies depending on age and gender, but it is typically between 20 and 140 IU/L.</p>
+    
+            <p><b>Alamine Aminotransferase (ALT)</b>: ALT is an enzyme found primarily in the liver. Elevated levels of ALT may indicate liver damage or disease, such as hepatitis or cirrhosis. The normal range for ALT is usually between 7 and 56 units per liter (U/L).</p>
+    
+            <p><b>Aspartate Aminotransferase (AST)</b>: AST is an enzyme found in various tissues throughout the body, including the liver and heart. Elevated levels of AST may indicate liver damage, but it is less specific for liver disease compared to ALT. The normal range for AST is typically between 10 and 40 U/L.</p>
+    
+            <p><b>Total Proteins</b>: Total amount of proteins in the blood. This includes albumin and globulin. Abnormal levels may indicate liver or kidney disease. The normal range for total proteins is usually between 6 and 8 grams per deciliter (g/dL).</p>
+    
+            <p><b>Albumin</b>: Albumin is a protein made by the liver. It helps maintain blood volume and regulate blood pressure. Abnormal levels may indicate liver or kidney disease. The normal range for albumin is typically between 3.4 and 5.4 g/dL.</p>
+    
+            <p><b>Albumin and Globulin Ratio</b>: Ratio of albumin to globulin in the blood. This ratio can provide additional information about liver function and overall health. A normal ratio is usually between 1.0 and 2.1.</p>
+    
+            <p><b>Outcome</b>: Indicates if the patient has liver disease (1) or not (2).</p>
+        </section>
+    </div>
+    <br><br>
+</body>
+</html>
