@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/Livercss.css">
+    <title>Liver Disease Section - Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="PAGE1.html">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="DiabetesPAGE.html">Diabetes</a>
+                                <a href="KidneyPAGE.html">Kidney</a>
+                                <a href="HeartPAGE.html">Heart Disease</a>
+                                <a href="MalariaPAGE.html">Malaria</a>
+                                <a href="PneumoniaPAGE.html">Pneumonia</a>
+                                <a href="BreastPAGE.html">Breast Cancer</a>
+                                <a href="LiverPAGE.html">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="profile.html">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="liver-section">
+            <h1>Enter the required data to predict <span class="gradient-text">Liver Disease</span></h1>
+            <form class="liver-form">
+                <div class="form-columns">
+                    <div class="form-column">
+                        <label for="age">Age:</label>
+                        <input type="text" id="age" placeholder="Patient's age" name="age" required>
+
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+
+                        <label for="totalBilirubin">Total Bilirubin:</label>
+                        <input type="text" id="totalBilirubin" placeholder="Total bilirubin level" name="totalBilirubin" required>
+
+                        <label for="directBilirubin">Direct Bilirubin:</label>
+                        <input type="text" id="directBilirubin" placeholder="Direct bilirubin level" name="directBilirubin" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="alkalinePhosphatase">Alkaline Phosphatase:</label>
+                        <input type="text" id="alkalinePhosphatase" placeholder="Alkaline phosphatase level" name="alkalinePhosphatase" required>
+
+                        <label for="alamineAminotransferase">Alamine Aminotransferase:</label>
+                        <input type="text" id="alamineAminotransferase" placeholder="Alamine aminotransferase level" name="alamineAminotransferase" required>
+
+                        <label for="aspartateAminotransferase">Aspartate Aminotransferase:</label>
+                        <input type="text" id="aspartateAminotransferase" placeholder="Aspartate aminotransferase level" name="aspartateAminotransferase" required>
+
+                        <label for="totalProteins">Total Proteins:</label>
+                        <input type="text" id="totalProteins" placeholder="Total proteins level" name="totalProteins" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="albumin">Albumin:</label>
+                        <input type="text" id="albumin" placeholder="Albumin level" name="albumin" required>
+
+                        <label for="albuminGlobulinRatio">Albumin and Globulin Ratio:</label>
+                        <input type="text" id="albuminGlobulinRatio" placeholder="Albumin and globulin ratio" name="albuminGlobulinRatio" required>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Predict Liver Disease</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

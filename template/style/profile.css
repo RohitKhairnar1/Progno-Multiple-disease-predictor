@@ -1,0 +1,173 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('../images/bg1.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, red, blue ); /* Gradient color */
+    -webkit-background-clip: text; /* Apply the gradient to the text */
+    color: transparent; /* Make the original text transparent */
+    display: inline-block; /* Prevent line break within the text */
+}
+
+header {
+    background-color: transparent;
+    padding: 20px 0;
+}
+
+h1 {
+    display: table; /* keep the background color wrapped tight */
+    margin: 0px auto 0px auto; /* keep the table centered */
+    padding:10px;
+    font-size:20px;
+    color:#ffffff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white; /* Text color in the navbar */
+    text-decoration: none; /* Remove underlines */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333; /* Dark background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: #fff; /* Text color */
+}
+
+.dropdown-content a {
+    color: #fff; /* Text color for links */
+    text-decoration: none; /* Remove underlines */
+    padding: 10px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555; /* Hover background color */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.welcome-section {
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+    margin-top: 12%;
+}
+
+.welcome-section h1 {
+    font-size: 3em;
+}
+
+.welcome-section p {
+    font-size: 1.2em;
+    
+}
+
+
+/* Updated CSS for profile section */
+.profile-box {
+    background-color: rgba(255, 255, 255, 0.7); 
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-info label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.profile-info input[type="text"],
+.profile-info input[type="password"] {
+    flex: 2;
+}
+
+.profile-info input[type="file"] {
+    flex: 2;
+    margin-left: 10px;
+}
+
+.profile-picture-container {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px; 
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease; 
+}
+.buttons button:hover {
+    background-color: #0056b3;
+}

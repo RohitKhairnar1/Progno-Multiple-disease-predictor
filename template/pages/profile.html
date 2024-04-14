@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/profile.css">
+    <title>Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="PAGE1.html">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="DiabetesPAGE.html">Diabetes</a>
+                                <a href="KidneyPAGE.html">Kidney</a>
+                                <a href="HeartPAGE.html">Heart Disease</a>
+                                <a href="MalariaPAGE.html">Malaria</a>
+                                <a href="PneumoniaPAGE.html">Pneumonia</a>
+                                <a href="BreastPAGE.html">Breast Cancer</a>
+                                <a href="LiverPAGE.html">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="profile.html">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="profile-box">
+            <h2>User Profile</h2>
+            <div class="profile-info">
+                <label for="profilePicture">Profile Picture:</label>
+                <div id="profileImage" class="profile-picture-container"></div>
+                <input type="file" id="profilePicture">
+            </div>
+            <div class="profile-info">
+                <label for="displayName">Display Name:</label>
+                <input type="text" id="displayName">
+            </div>
+            <div class="profile-info">
+                <label for="email">Email:</label>
+                <input type="text" id="email" disabled>
+            </div>
+            <div class="profile-info">
+                <label for="password">Password:</label>
+                <input type="password" id="password">
+            </div>
+            <div class="buttons">
+                <button class="update-btn" onclick="updateProfile()">Update Profile</button>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <!-- Below is the additional script for Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+
+ 
+    <script>
+        const firebaseConfig = {
+  apiKey: "AIzaSyCmRmbdb0J0ZmkrYJX9Q2VzWNoGdo77sho",
+  authDomain: "progno-app.firebaseapp.com",
+  projectId: "progno-app",
+  storageBucket: "progno-app.appspot.com",
+  messagingSenderId: "280979417527",
+  appId: "1:280979417527:web:ce04312654f05b52eea032"
+};
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+function updateProfile() {
+    var user = firebase.auth().currentUser;
+    var displayName = document.getElementById("displayName").value;
+    var password = document.getElementById("password").value;
+  
+    // Update display name
+    users.updateProfile({
+        displayName: displayName
+    }).then(function() {
+        console.log("Display name updated successfully");
+    }).catch(function(error) {
+        console.error("Error updating display name:", error);
+    });
+  
+    // Update password if provided
+    if (password) {
+        user.updatePassword(password).then(function() {
+            console.log("Password updated successfully");
+        }).catch(function(error) {
+            console.error("Error updating password:", error);
+        });
+    }
+  
+    // Handle profile picture upload
+    var profilePicture = document.getElementById("profilePicture").files[0];
+    if (profilePicture) {
+        var storageRef = firebase.storage().ref().child('profilePictures/' + user.uid);
+        storageRef.put(profilePicture).then(function(snapshot) {
+            console.log("Profile picture uploaded successfully");
+            // Get the uploaded profile picture URL and update user's photoURL
+            snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                user.updateProfile({
+                    photoURL: downloadURL
+                }).then(function() {
+                    console.log("Profile picture URL updated successfully");
+                    // Save the download URL in Firestore or Realtime Database
+                    firebase.firestore().collection('users').doc(user.uid).update({
+                        profilePictureURL: downloadURL
+                    }).then(function() {
+                        console.log("Profile picture URL saved to Firestore");
+                        // Optionally, display the updated profile picture
+                        var profileImage = document.getElementById("profileImage");
+                        profileImage.innerHTML = `<img src="${downloadURL}" alt="Profile Picture" style="max-width: 100px;">`;
+                    }).catch(function(error) {
+                        console.error("Error saving profile picture URL to Firestore:", error);
+                    });
+                }).catch(function(error) {
+                    console.error("Error updating profile picture URL:", error);
+                });
+            }).catch(function(error) {
+                console.error("Error getting profile picture URL:", error);
+            });
+        }).catch(function(error) {
+            console.error("Error uploading profile picture:", error);
+        });
+    }
+  }
+  
+  
+  // Logout function
+  
+  
+  const logout = async () => {
+    try {
+      await auth.signOut();
+      console.log("Logged out successfully");
+      // Handle successful logout (e.g., redirect to login page)
+    } catch (error) {
+      console.error("Logout failed:", error.message);
+      // Handle logout errors
+    }
+  };
+  
+        
+    </script>
+    <script src="index.js"></script>
+   
+
+</body>
+</html>

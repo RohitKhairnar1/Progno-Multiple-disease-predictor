@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/PAGE1css.css">
+    <title>Disease Detection</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="PAGE1.html">Home</a></li>
+                        <li><a href="Login.html">Login</a></li>
+                        <li><a href="Signup.html">SignUp</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section class="welcome-section">
+            <h1><span class="gradient-text">Progno</span> <a id="welcome-text"> welcomes you !</a></h1>
+            <h3>Your reliable platform for detecting various diseases.</h3>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var welcomeText = document.getElementById("welcome-text");
+            var sentences = [
+                " predicts diseases",
+                " for healthier life",
+                " can save lifes",
+                " for Progonosis",
+                " focuses on accuracy"
+            ];
+
+            // Function to change the welcome text
+            function changeWelcomeText() {
+                var randomIndex = Math.floor(Math.random() * sentences.length);
+                welcomeText.textContent = sentences[randomIndex];
+            }
+
+            // Change the welcome text every 5 seconds (adjust as needed)
+            setInterval(changeWelcomeText, 2000);
+        });
+    </script>
+
+</body>
+</html>
