@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('PAGE1.html')
+    return render_template('Login.html')
 
 @app.route('/PAGE1',endpoint='page1')
 def page1():

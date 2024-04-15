@@ -26,8 +26,8 @@
         <section class="signup-section">
             <h1>Login to <span class="gradient-text">Progno</span> </h1>
             <form class="signup-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" placeholder="Enter your username" name="username" required>
+                <!-- <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" name="username" required> -->
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" placeholder="Enter your email" name="email" required>
@@ -40,5 +40,25 @@
             <p>Dont't have an account? <a href="/Signup">Join here</a>.</p>
         </section>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <!-- Below is the additional script for Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+
+    <script src="/Progno-Multiple-disease-predictor/frontend/pages/firebase.js"></script>
+    <script>
+        const firebaseConfig = {
+  apiKey: "AIzaSyCmRmbdb0J0ZmkrYJX9Q2VzWNoGdo77sho",
+  authDomain: "progno-app.firebaseapp.com",
+  projectId: "progno-app",
+  storageBucket: "progno-app.appspot.com",
+  messagingSenderId: "280979417527",
+  appId: "1:280979417527:web:ce04312654f05b52eea032"
+};
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+      
+        
+    </script>
 </body>
 </html>
