@@ -35,7 +35,7 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" placeholder="Enter your password" name="password" required>
 
-                <button type="submit" class="submit-button">Login</button>
+                <button type="submit"  id="login-btn" class="submit-button">Login</button>
             </form>
             <p>Dont't have an account? <a href="/Signup">Join here</a>.</p>
         </section>
@@ -57,7 +57,22 @@
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
-      
+const loginBtn = document.querySelector('#login-btn');
+loginBtn.addEventListener('click', e => {
+    e.preventDefault();
+
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+
+    auth.signInWithEmailAndPassword(email, password)
+        .then(cred => {
+            console.log('Logged in user!');
+            window.location.href = "/PAGE1";
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+});
         
     </script>
 </body>

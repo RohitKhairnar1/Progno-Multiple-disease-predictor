@@ -37,7 +37,7 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" placeholder="Enter your password" name="password" required>
 
-                <button type="submit" class="submit-button">Sign Up</button>
+                <button type="submit" id="signup-btn" class="submit-button">Sign Up</button>
             </form>
             <p>Already have an account? <a href="/Login">Login here</a>.</p>
         </section>
@@ -73,7 +73,7 @@
                     console.log(cred);
                     console.log('User signed up!');
                     alert('Signup successful! Redirecting to login page.');
-                    window.location.href = "Login.html";
+                    window.location.href = "/Login";
                 })
                     .catch(error => {
                         if (error.code === 'auth/email-already-in-use') {
