@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Accountcss.css') }}">
+    <title>Disease Detection</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="static/css/images/logo.png" alt="Logo">
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="/PAGE1">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Diseases</a>
+                            <div class="dropdown-content">
+                                <a href="/DiabetesPAGE">Diabetes</a>
+                                <a href="/KidneyPAGE">Kidney</a>
+                                <a href="/HeartPAGE">Heart Disease</a>
+                                <a href="/MalariaPAGE">Malaria</a>
+                                <a href="/PneumoniaPAGE">Pneumonia</a>
+                                <a href="/BreastPAGE">Breast Cancer</a>
+                                <a href="/LiverPAGE">Liver Disease</a>
+                            </div>
+                        </li>
+                        <li><a href="/About">About</a></li>
+                        <li><a href="/Account">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="path/to/your/image.jpg" alt="Profile Image" class="round-image">
+            </div>
+            <div class="profile-details">
+                <h2>Username</h2>
+                <p>Email: <span id="email"></span></p>
+                <p>Password: <span id="password"></span></p>
+                <div class="flex justify-end">
+                    <button id="edit-btn">Edit</button>
+                    <button id="update-btn" style="display: none;">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <!-- Below is the additional script for Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="/Progno-Multiple-disease-predictor/frontend/pages/firebase.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCmRmbdb0J0ZmkrYJX9Q2VzWNoGdo77sho",
+            authDomain: "progno-app.firebaseapp.com",
+            projectId: "progno-app",
+            storageBucket: "progno-app.appspot.com",
+            messagingSenderId: "280979417527",
+            appId: "1:280979417527:web:ce04312654f05b52eea032"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                var userId = user.uid;
+                var email = user.email;
+                var password = user.password; // Note: Firebase does not provide a way to retrieve the user's password.
+
+                // Display the email
+                document.getElementById('email').textContent = email;
+
+                // For security reasons, do not display the password.
+                // Instead, provide a way for users to reset their password.
+                document.getElementById('password').textContent = '********';
+
+                // Fetch additional details from Firestore
+                var db = firebase.firestore();
+                db.collection("users").doc(userId).get().then((doc) => {
+                    if (doc.exists) {
+                        // Display additional user details if available
+                        // For example, username
+                        var username = doc.data().username;
+                        document.querySelector('.profile-details h2').textContent = username;
+                    } else {
+                        console.log("No such document!");
+                    }
+                }).catch((error) => {
+                    console.log("Error getting document:", error);
+                });
+            } else {
+                // No user is signed in.
+                console.log('No user is signed in.');
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>
