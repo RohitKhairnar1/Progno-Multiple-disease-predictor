@@ -21,6 +21,9 @@
             margin-top: 10px;
             text-align: center;
         }
+        .alert-danger {
+            color: red;
+        }
     </style>
     <title>Malaria Section - Disease Detection</title>
 </head>
@@ -29,7 +32,7 @@
         <header>
             <nav>
                 <div class="logo">
-                    <img src="static/css/images/logo.png" alt="Logo">
+                    <img src="{{ url_for('static', filename='css/images/logo.png') }}" alt="Logo">
                 </div>
                 <div class="navbar">
                     <ul>
@@ -52,31 +55,53 @@
                 </div>
             </nav>
         </header>
-        <section class="malaria-section" >
+        <section class="malaria-section">
             <h1>Upload an image to predict <span class="gradient-text">Malaria</span></h1>
-            <form class="malaria-form" enctype="multipart/form-data" action="/predict_malaria" method="post">
+            {% if message %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+            <form class="malaria-form" enctype="multipart/form-data" action="/malariapredict" method="post">
                 <div class="upload-section">
-                    <input type="file" id="imageUpload" accept="image/*" name="image" required>
+                    <input type="file" id="imageUpload" accept="image/*" name="image" onchange="readURL(this);" required>
                 </div>
+                <center>
+                    <img class="img-fluid" id="blah" src="#" alt="UPLOADED IMAGE WILL APPEAR HERE" style="display: none; margin-top: 20px;"/>
+                </center>
+                <br>
                 <button type="submit" class="submit-button">Predict Malaria</button>
             </form>
             <!-- Sample Images -->
             <br><br><br>
-            <h3 style="color: aliceblue; text-align: left; ">Input Data Example :</h3>
-            <div class="sample-images" >
+            <h3 style="color: aliceblue; text-align: left;">Input Data Example :</h3>
+            <div class="sample-images">
                 <div class="sample-image" style="background-color:#A09E90; border-radius: 5px;">
                     <h3 style="color: black;">Uninfected</h3>
-                    <img src="static/css/images/CELL_IMAGE2.png" alt="Uninfected Sample">
+                    <img src="{{ url_for('static', filename='css/images/CELL_IMAGE2.png') }}" alt="Uninfected Sample">
                     <p class="cell-description" style="color: black;">This image shows uninfected red blood cells.</p>
                 </div>
                 <div class="sample-image" style="background-color:#A09E90; border-radius: 5px;">
                     <h3 style="color: black;">Infected</h3>
-                    <img src="static/css/images/CELL_IMAGE1.png" alt="Infected Sample">
-                    <p class="cell-description" style="color: black;"><br>This image shows red blood cells infected with malaria parasites.</p>
+                    <img src="{{ url_for('static', filename='css/images/CELL_IMAGE1.png') }}" alt="Infected Sample">
+                    <p class="cell-description" style="color: black;">This image shows red blood cells infected with malaria parasites.</p>
                 </div>
             </div>
         </section>
     </div>
     <br><br><br>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var blah = document.getElementById('blah');
+                    blah.src = e.target.result;
+                    blah.style.display = 'block';
+                    blah.width = 500;
+                    blah.height = 500;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 </html>
