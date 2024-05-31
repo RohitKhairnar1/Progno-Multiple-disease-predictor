@@ -164,56 +164,6 @@ def predict_breast_cancer():
     return render_template('Result.html', prediction_text=prediction_text, recommendation=recommendation)
 
 # Load the trained model and scaler
-with open('kidney_disease_model.pkl', 'rb') as file:
-    kidney_model = pickle.load(file)
-with open('kidney_disease_scaler.pkl', 'rb') as file:
-    scaler = pickle.load(file)
-
-from sklearn.preprocessing import LabelEncoder
-
-@app.route('/predict_kidney', methods=['POST'], endpoint='predict_kidney')
-def predict_kidney():
-    # Create a mutable copy of the form data
-    data = request.form.copy()
-    
-    # Assuming 'sg', 'al', 'su', 'rbc', 'pc', 'pcc', 'ba', 'bgr', 'bu', 'sc', 'sod', 'pot', 'hemo', 'pcv', 'wc', 'rc', 'htn', 'dm', 'cad', 'appet', 'pe', 'ane' are categorical features
-    categorical_features = ['sg', 'al', 'su', 'rbc', 'pc', 'pcc', 'ba', 'bgr', 'bu', 'sc', 'sod', 'pot', 'hemo', 'pcv', 'wc', 'rc', 'htn', 'dm', 'cad', 'appet', 'pe', 'ane']
-    le = LabelEncoder()
-    
-    # Encode categorical features
-    for feature in categorical_features:
-        # Check if the key exists in the data dictionary
-        if feature in data:
-            data[feature] = le.fit_transform([data[feature]])[0]
-        else:
-            # Handle missing keys, e.g., by skipping encoding or providing a default value
-            print(f"Warning: The key '{feature}' was not found in the form data.")
-            # Optionally, you can skip encoding for this feature or provide a default value
-    
-    # Convert all features to float
-    features = [float(data[feature]) for feature in ['age', 'bp', 'sg', 'al', 'su', 'rbc', 'pc', 'pcc', 'ba', 'bgr', 'bu', 'sc', 'sod', 'pot', 'hemo', 'pcv', 'wc', 'rc', 'htn', 'dm', 'cad', 'appet', 'pe', 'ane']]
-    
-    # Standardize the features
-    features_scaled = scaler.transform([features])
-    
-    # Make a prediction and get the probability of the positive class
-    probabilities = kidney_model.predict_proba(features_scaled)[0]
-    prediction = kidney_model.predict(features_scaled)[0]
-    severity_percentage = round(probabilities[1] * 100, 2) # Assuming the second element is the probability of CKD
-    
-    # Convert the prediction to a string
-    prediction_text = 'CKD' if prediction == 1 else 'No CKD'
-    
-    # Determine the recommendation based on the severity
-    if severity_percentage > 70:
-        recommendation = "It's highly recommended to consult with a healthcare professional for regular check-ups and lifestyle modifications."
-    elif severity_percentage > 40:
-        recommendation = "Consider making some lifestyle changes and schedule regular health check-ups."
-    else:
-        recommendation = "Keep an eye on your health, but no immediate action is required."
-    
-    return render_template('Result.html', prediction_text='Predicted Severity: {}%'.format(severity_percentage), recommendation=recommendation)
-
 
 # Load the malaria detection model
 malaria_model = load_model('malaria.h5')
@@ -244,7 +194,46 @@ def predict_malaria():
         os.remove(filename)
         
         return render_template('Result.html', prediction_text=prediction_text)
-    
+
+
+model = load_model('pneumonia_model.h5')
+
+def model_predict(img_path, model):
+    # Load the image
+    img = image.load_img(img_path, target_size=(150, 150))  # Resize image to match model's expected input
+    # Convert the image to array
+    img_array = image.img_to_array(img)
+    # Expand dimensions to match the shape required by the model
+    img_array = np.expand_dims(img_array, axis=0)
+    # Normalize the image
+    img_array /= 255.0
+
+    # Predict
+    prediction = model.predict(img_array)
+    return prediction
+
+
+
+@app.route('/predict', methods=['POST'])
+def upload():
+    if request.method == 'POST':
+        # Get the file from post request
+        f = request.files['file']
+
+        # Save the file to ./uploads
+        basepath = os.path.dirname(__file__)
+        file_path = os.path.join(basepath, 'uploads', f.filename)
+        f.save(file_path)
+
+        # Make prediction
+        preds = model_predict(file_path, model)
+        os.remove(file_path)  # Remove the uploaded file after prediction
+
+        # Process result
+        result = "Pneumonia Detected" if preds[0][0] > 0.5 else "No Pneumonia Detected"
+        return result
+    return None
+
 if __name__ == '__main__':
     app.run(debug=True)
 
