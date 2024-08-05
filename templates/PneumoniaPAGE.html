@@ -3,7 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/Pneumoniacss.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Malariacss.css') }}">
+    <style>
+        .sample-images {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .sample-image {
+            width: 45%;
+        }
+        .sample-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .cell-description {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .alert-danger {
+            color: red;
+        }
+        .pneumonia-form .submit-button {
+    background-color: #186A3B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.pneumonia-form .submit-button:hover {
+    background-color: #790B0B ;
+}
+
+    </style>
     <title>Pneumonia Section - Disease Detection</title>
 </head>
 <body>
@@ -11,11 +44,11 @@
         <header>
             <nav>
                 <div class="logo">
-                    <img src="static/css/images/logo.png" alt="Logo">
+                    <img src="{{ url_for('static', filename='css/images/logo.png') }}" alt="Logo">
                 </div>
                 <div class="navbar">
                     <ul>
-                        <li><a href="PAGE1">Home</a></li>
+                        <li><a href="/PAGE1">Home</a></li>
                         <li class="dropdown">
                             <a href="#">Diseases</a>
                             <div class="dropdown-content">
@@ -34,15 +67,53 @@
                 </div>
             </nav>
         </header>
-        <section class="Pneumonia-section">
-            <h1>Upload an image to predict <span class="gradient-text">Pneumonia</span></h1>
-            <form class="Pneumonia-form" enctype="multipart/form-data">
+        <section class="malaria-section">
+            <h1 style="color: aliceblue;">Upload an X-Ray to predict <span class="gradient-text">Pneumonia</span></h1>
+            {% if message %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+            <form class="pneumonia-form" enctype="multipart/form-data" action="/pneumoniapredict" method="post">
                 <div class="upload-section">
-                    <input type="file" id="imageUpload" accept="image/*" name="image" required>
+                    <input type="file" id="imageUpload" accept="image/*" name="image" onchange="readURL(this);" required>
                 </div>
+                <center>
+                    <img class="img-fluid" id="blah" src="#" alt="UPLOADED IMAGE WILL APPEAR HERE" style="display: none; margin-top: 20px;"/>
+                </center>
+                <br>
                 <button type="submit" class="submit-button">Predict Pneumonia</button>
             </form>
+            <!-- Sample Images -->
+            <br><br><br>
+            <h3 style="color: aliceblue; text-align: left;">Input Data Example :</h3>
+            <div class="sample-images">
+                <div class="sample-image" style="background-color:#A09E90; border-radius: 5px;">
+                    <h3 style="color: black;">Normal</h3>
+                    <img src="{{ url_for('static', filename='css/images/normalpneumonia.jpeg') }}" alt="Normal X-Ray">
+                    <p class="cell-description" style="color: black;">This image shows a normal lung X-Ray.</p>
+                </div>
+                <div class="sample-image" style="background-color:#A09E90; border-radius: 5px;">
+                    <h3 style="color: black;">Pneumonia</h3>
+                    <img src="{{ url_for('static', filename='css/images/infectedpneumonia.jpeg') }}" alt="Pneumonia X-Ray">
+                    <p class="cell-description" style="color: black;">This image shows an X-Ray with signs of pneumonia.</p>
+                </div>
+            </div>
         </section>
     </div>
+    <br><br><br>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var blah = document.getElementById('blah');
+                    blah.src = e.target.result;
+                    blah.style.display = 'block';
+                    blah.width = 500;
+                    blah.height = 500;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 </html>

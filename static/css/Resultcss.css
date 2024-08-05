@@ -14,11 +14,11 @@ header {
 }
 
 h1 {
-    display: table; /* keep the background color wrapped tight */
-    margin: 0px auto 0px auto; /* keep the table centered */
-    padding:10px;
-    font-size:20px;
-    color:#ffffff;
+    display: table;
+    margin: 0px auto;
+    padding: 10px;
+    font-size: 20px;
+    color: #ffffff;
 }
 
 nav {
@@ -34,7 +34,7 @@ nav {
 
 .logo img {
     height: 50px;
-    margin-right: 10px; /* Adjust margin as needed */
+    margin-right: 10px;
 }
 
 .navbar ul {
@@ -47,8 +47,8 @@ nav {
 }
 
 .navbar a {
-    color: white; /* Text color in the navbar */
-    text-decoration: none; /* Remove underlines */
+    color: white;
+    text-decoration: none;
 }
 
 .dropdown {
@@ -58,54 +58,41 @@ nav {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #333; /* Dark background color */
+    background-color: #333;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    color: #fff; /* Text color */
+    color: #fff;
 }
 
 .dropdown-content a {
-    color: #fff; /* Text color for links */
-    text-decoration: none; /* Remove underlines */
+    color: #fff;
+    text-decoration: none;
     padding: 10px;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #555; /* Hover background color */
+    background-color: #555;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.welcome-section {
-    text-align: center;
-    color: #fff;
-    padding: 30px;
-    margin-top: 12%;
-}
-
-.welcome-section h1 {
-    font-size: 3em;
-}
-
-.welcome-section p {
-    font-size: 1.2em;
-}
-
-
 .container {
     width: 90%;
     margin: auto;
     padding: 20px;
 }
-h1, h2 , h3{
+
+h1, h2, h3 {
     color: #b51d43;
 }
+
 p {
     color: #000000;
 }
+
 .report-section {
     background-color: #fff;
     padding: 20px;
@@ -113,6 +100,60 @@ p {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .report-section h2 {
+    text-align: center;
     margin-top: 0;
+}
+
+.report-details {
+    margin-bottom: 20px;
+}
+
+.report-details h3 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.report-details p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.recommendation-text {
+    font-size: 1.2em;
+    color: #d9534f;
+}
+
+#dateTime {
+    color: #007BFF;
+}
+
+.additional-features {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.additional-features h2 {
+    color: #333;
+}
+
+.additional-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.additional-features ul li {
+    background-color: #e7e7e7;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+#historicalDataChart {
+    max-width: 100%;
+    height: 400px;
+    margin-top: 20px;
 }

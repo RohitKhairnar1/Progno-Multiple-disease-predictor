@@ -38,15 +38,15 @@
         </header>
         <div class="profile-section">
             <div class="profile-image">
-                <img src="path/to/your/image.jpg" alt="Profile Image" class="round-image">
+                <img src="../static/css/images/logo1.png" alt="Profile Image" class="round-image">
             </div>
             <div class="profile-details">
-                <h2>Username</h2>
+                <!-- <h2>Username</h2> -->
                 <p>Email: <span id="email"></span></p>
                 <p>Password: <span id="password"></span></p>
-                <div class="flex justify-end">
-                    <button id="edit-btn">Edit</button>
-                    <button id="update-btn" style="display: none;">Update</button>
+                <div class="flex">
+                    
+                    <button onSubmit="logout()" id="log-btn">Log out</button>
                 </div>
             </div>
         </div>
@@ -100,6 +100,13 @@
                 // No user is signed in.
                 console.log('No user is signed in.');
             }
+            function logout() {
+            auth.signOut().then(() => {
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                console.error('Sign Out Error', error);
+            });
+            };
         });
 
 
